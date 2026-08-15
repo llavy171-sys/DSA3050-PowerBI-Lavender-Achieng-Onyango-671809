@@ -663,3 +663,182 @@ RANKX(
 **Filter context:** `ALL()` removes the category filter when calculating the ranking, allowing each category to be compared against all categories.
 
 **Dashboard use:** Used in category-level sales analysis to identify the relative performance of product categories.
+
+# 8. Dashboard Design and Analysis
+
+The Power BI report consists of three interactive dashboard pages designed to
+provide a progression from overall business performance to detailed sales and
+product analysis and finally to profitability and diagnostic analysis.
+
+The dashboards use KPI cards, charts, tables, slicers and interactive
+filtering to allow users to explore the business performance from different
+perspectives.
+
+---
+
+## 8.1 Executive Overview
+
+The Executive Overview provides a high-level summary of the overall business
+performance.
+
+The dashboard displays the following key performance indicators:
+
+- **Total Sales:** 12.64M
+- **Total Profit:** 1.47M
+- **Total Orders:** 25K
+- **Total Customers:** 5K
+- **Total Profit Margin:** 11.61%
+- **YoY Sales Growth:** 51.54%
+
+The dashboard also presents sales trends over time, sales by region and total
+sales by category. Year, Region and Category slicers allow users to filter
+the dashboard and examine specific parts of the business.
+
+The sales trend shows an increase in total sales from approximately **2.3M in
+2011** to **4.3M in 2014**. At category level, **Technology** records the
+highest sales at approximately **4.7M**, followed by Furniture at **4.1M** and
+Office Supplies at **3.8M**.
+
+The Executive Overview therefore provides management with a concise view of
+overall sales, profitability, customer and order performance.
+
+**Screenshot:**
+
+<img width="1436" height="796" alt="05_dashboard_overview" src="https://github.com/user-attachments/assets/b1421a54-ac21-41ae-8cf2-05f9778c90ae" />
+
+---
+
+## 8.2 Sales and Product Analysis
+
+The Sales and Product Analysis dashboard provides a more detailed examination
+of product, category, sub-category and customer segment performance.
+
+The Product Performance table displays:
+
+- Product Name
+- Category
+- Sub-Category
+- Total Sales
+- Total Profit
+- Profit Margin %
+
+The dashboard also contains Total Profit by Sub-Category, Total Sales by
+Sub-Category and Total Sales by Customer Segment visualizations.
+
+The sub-category analysis shows **Phones** as the highest-selling sub-category
+at approximately **1.71M**, followed by **Copiers** at approximately **1.51M**
+and **Chairs** at approximately **1.50M**.
+
+The customer segment analysis shows that the **Consumer segment** contributes
+the largest share of sales at approximately **6.51M (51.48%)**, followed by
+Corporate at approximately **3.82M (30.25%)** and Home Office at approximately
+**2.31M (18.27%)**.
+
+The dashboard also provides Category and Region filters for more focused
+analysis.
+
+**Screenshot:**
+
+<img width="1444" height="798" alt="06_dashboard_analysis" src="https://github.com/user-attachments/assets/4cc5d641-1fa7-4790-8cb1-8a906debf8cf" />
+
+---
+
+## 8.3 Profitability and Diagnostic Insights
+
+The Profitability and Diagnostic Insights dashboard focuses on profitability
+and operational performance.
+
+The dashboard displays:
+
+- **Average Profit per Order:** $58.6162
+- **Overall Profit Margin:** 11.61%
+- **Current Profit Status:** Profitable
+
+The Sales versus Profit by Category visualization shows the relationship
+between sales and profit across Furniture, Office Supplies and Technology.
+
+Technology records the highest profit at approximately **0.66M**, followed by
+Office Supplies at approximately **0.52M** and Furniture at approximately
+**0.29M**.
+
+The Profit by Region visualization shows **EU - Central** as the highest
+displayed region at approximately **0.22M**, followed by **APAC - North Asia**
+at approximately **0.17M**.
+
+The Average Shipping Time by Ship Mode visualization shows that **Standard
+Class** has the highest average shipping time at approximately **5.00 days**,
+followed by **Second Class** at **3.23 days**, **First Class** at **2.18 days**
+and **Same Day** at approximately **0.04 days**.
+
+This page provides a deeper view of profitability and shipping performance,
+helping identify differences between product categories, regions and
+shipping modes.
+
+**Screenshot:**
+
+<img width="1381" height="801" alt="07_dashboard_insights" src="https://github.com/user-attachments/assets/a3db4faf-826c-47ee-a9ad-6891334c2a9e" />
+
+---
+
+# 9. Power BI Interactivity
+
+The report incorporates interactive features that allow users to explore the
+data dynamically.
+
+### Slicers
+
+Year, Region and Category slicers are provided across the dashboards. Users
+can select specific values to filter the displayed KPIs and visualizations.
+
+### Cross-Filtering
+
+The visualizations interact with one another. Selecting a category, region or
+other relevant data point allows the user to examine the corresponding
+changes in other visuals.
+
+### Drill-Down
+
+The product analysis provides information at different levels of product
+detail, including Category, Sub-Category and Product, allowing users to
+investigate product performance at a more detailed level.
+
+### Page Navigation
+
+Navigation between the dashboard pages allows users to move from the
+Executive Overview to Sales and Product Analysis and then to Profitability and
+Diagnostic Insights.
+
+### Bookmarks
+
+A Reset Filters bookmark was implemented to return the dashboard to its
+default view after filters have been applied.
+
+---
+
+# 10. Key Dashboard Findings
+
+The dashboards provide the following important findings:
+
+1. **Overall Performance:** The business generated total sales of **12.64M**
+   and total profit of **1.47M**, with an overall profit margin of **11.61%**.
+
+2. **Sales Growth:** Total sales increased from approximately **2.3M in 2011**
+   to **4.3M in 2014**, indicating strong growth over the period displayed.
+
+3. **Category Performance:** **Technology** generated the highest total sales
+   at approximately **4.7M** and also recorded the highest profit at
+   approximately **0.66M**.
+
+4. **Customer Segment:** The **Consumer segment** generated the largest sales
+   contribution at approximately **6.51M (51.48%)**.
+
+5. **Regional Profitability:** **EU - Central** recorded the highest displayed
+   regional profit at approximately **0.22M**.
+
+6. **Shipping Performance:** **Standard Class** had the highest average
+   shipping time at approximately **5 days**, while Same Day shipping had the
+   lowest average at approximately **0.04 days**.
+
+These findings demonstrate how the dashboard can be used to assess overall
+performance, identify high-performing categories and segments, compare
+regional profitability and evaluate shipping performance.
