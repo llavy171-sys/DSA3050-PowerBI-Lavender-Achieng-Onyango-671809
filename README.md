@@ -4,9 +4,24 @@
 **Student Name:** Lavender Achieng’ Onyango  
 **Registration Number:** 671809  
 **Course:** DSA3050A – Business Intelligence & Data Visualization  
-**Software:** Microsoft Power BI Desktop  
-**Dataset:** Global Superstore Dataset  
 
+---
+## Dataset Source
+
+Source: **Global Superstore Dataset**
+
+The dataset was obtained from Kaggle and contains transactional sales data
+from a global superstore.
+
+Source: **Kaggle – Global Superstore Dataset**  
+https://www.kaggle.com/datasets/fatihilhan/global-superstore-dataset
+
+## Dataset Summary
+
+- **Number of Rows:** 51,290
+- **Number of Columns:** 24
+- **Time Period:** 2011–2015
+- **Dataset Type:** Transactional retail sales data
 ---
 
 ## 1. Project Overview
