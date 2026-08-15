@@ -6,6 +6,19 @@
 **Course:** DSA3050A – Business Intelligence & Data Visualization  
 
 ---
+
+## 1. Project Overview
+
+This project uses **Microsoft Power BI to analyse the Global Superstore dataset and turn the available sales information into useful business insights**. The analysis moves from preparing the raw data to creating calculations, visualisations, and an interactive report.
+
+The dataset contains information on areas such as **sales, products, customers, locations, orders, shipping, and profit**. These fields are used to examine business performance from different perspectives.
+
+The project covers the main stages of the analysis: **cleaning and preparing the data in Power Query, organizing it into a suitable data model, creating DAX measures, developing interactive dashboards, and interpreting the results**. The final report is intended to make it easier to identify patterns in sales and profitability and support informed business decisions.
+
+---
+
+# 2. Dataset Selection and Understanding
+
 ## Dataset Source
 
 Source: **Global Superstore Dataset**
@@ -22,41 +35,6 @@ https://www.kaggle.com/datasets/fatihilhan/global-superstore-dataset
 - **Number of Columns:** 24
 - **Time Period:** 2011–2015
 - **Dataset Type:** Transactional retail sales data
----
-
-## 1. Project Overview
-
-This project presents a complete Business Intelligence solution developed using
-Microsoft Power BI. The objective is to transform raw transactional data into
-an interactive analytical solution that supports business performance
-monitoring, detailed analysis, and data-driven decision-making.
-
-The project follows the complete Business Intelligence development process:
-
-**Dataset → Power Query → Data Model → DAX → Dashboard → Insights**
-
-The analysis uses the Global Superstore dataset, which contains transactional
-information relating to sales, products, customers, locations, orders,
-shipping, and profitability.
-
-The solution demonstrates data acquisition and understanding, data cleaning and
-transformation using Power Query, dimensional data modelling, DAX-based
-business calculations, interactive dashboard development, and interpretation
-of analytical results.
-
----
-
-# 2. Dataset Selection and Understanding
-
-## 2.1 Dataset Source
-
-The dataset used for this project is the **Global Superstore dataset**.
-
-**Source:**https://www.kaggle.com/code/osmanahmedosman/global-superstore/input
-
-The dataset was obtained from a publicly available source and contains
-transaction-level information suitable for Business Intelligence analysis.
-
 > **Screenshot: Raw Dataset**
 ><img width="1895" height="967" alt="Screenshot 2026-08-15 094656" src="https://github.com/user-attachments/assets/477f8aa3-ee59-4e2c-8c06-828a5a955ffd" />
 
@@ -64,16 +42,13 @@ transaction-level information suitable for Business Intelligence analysis.
 
 ## 2.2 What the Dataset Represents
 
-The Global Superstore dataset represents transactional business data covering
-sales activities across products, customers, locations, order dates, shipping
-methods, quantities, sales and profit.
+The Global Superstore dataset contains records of day-to-day sales transactions. It includes details about the **orders, products, customers, locations, shipping, sales, quantities, and profit**.
 
 Each transaction provides information that can be analysed from several
 perspectives, including product performance, customer segments, geographic
 performance, sales trends, order activity, shipping and profitability.
 
-The transactional structure of the dataset makes it suitable for developing
-an analytical model and interactive Power BI dashboards.
+Because the dataset contains both transaction details and business measures, it provides a good basis for building the Power BI report and exploring the main sales and profitability patterns.
 
 ---
 
@@ -82,19 +57,19 @@ an analytical model and interactive Power BI dashboards.
 The Global Superstore dataset was selected because it provides sufficient
 complexity for meaningful Business Intelligence analysis.
 
-The dataset contains:
+## Main Variables in the Dataset
 
-- Numerical variables for quantitative analysis
-- Categorical variables for segmentation
-- Date fields for time-based analysis
-- Sales and profit measures for KPI development
-- Product and sub-category information
-- Customer information
-- Geographic information
-- Shipping information
+The dataset contains a range of variables that support different types of business analysis:
 
-These characteristics allow the development of multiple analytical
-perspectives rather than limiting the analysis to a single business measure.
+- **Sales, Profit, Quantity and Shipping Cost** – numerical fields used to measure sales performance, profitability, product volume, discounts and shipping costs.
+- **Category, Sub-Category, Segment and Ship Mode** – categorical fields used to compare performance across products, customer groups and shipping methods.
+- **Order Date and Ship Date** – date fields used to analyse sales trends over time and examine shipping duration.
+- **Order ID, Customer ID and Product ID** – identification fields used to distinguish individual orders, customers and products.
+- **Customer Name and Product Name** – fields that allow more detailed analysis at the customer and product levels.
+- **Country, City, State, Region and Market** – geographic fields used to compare sales and profit across different locations.
+- **Order Priority** – a field showing the priority assigned to each order.
+
+These variables provide different ways of examining the business, including **sales, profitability, product performance, customer activity, geographic performance and shipping operations**.
 
 ---
 
@@ -124,26 +99,24 @@ The major variables used in the analysis include:
 
 # 3. Business / Analytical Problem
 
-The main analytical problem investigated in this project is:
+The project focuses on turning the transactional information in the Global
+Superstore dataset into a useful and interactive Power BI report. The analysis
+looks at the main areas of business performance, including **sales,
+profitability, products, customers, geographic regions and changes over time**.
 
-**How can transactional sales data be transformed into an interactive
-Business Intelligence solution that enables management to evaluate sales
-performance, profitability, product performance, customer activity,
-geographic performance and changes over time?**
+The aim is to use the available data to identify areas where the business is
+performing well, areas that may require attention, and how sales relate to
+profitability.
 
-The analysis focuses on identifying areas of strong performance, areas
-requiring attention, and relationships between sales and profitability.
-
-The Power BI solution is therefore designed to move from an overall view of
-business performance to detailed product analysis and finally to deeper
-profitability and diagnostic analysis.
+The report therefore starts with an overall view of business performance,
+followed by more detailed analysis of products and sales, and then focuses on
+profitability and other factors that may help explain the results.
 
 ---
 
 # 4. Analytical Questions
 
-The Power BI solution was developed to answer the following analytical
-questions:
+The Power BI report was developed around the following questions:
 
 1. What are the overall sales, profit, orders and customer performance of the
    business?
@@ -161,8 +134,8 @@ questions:
 7. Which products demonstrate strong or weak sales and profitability
    performance?
 
-8. How does profitability compare across different business segments and
-   geographic regions?
+8. Which areas of the business show strong sales but relatively weak
+   profitability?
 
 9. How does shipping time vary across different shipping modes?
 
@@ -183,158 +156,235 @@ requirements of the dataset.
 
 The major transformations performed included:
 
-1. Reviewing and removing unnecessary fields where appropriate.
-2. Correcting and standardizing data types.
-3. Cleaning text fields.
-4. Handling missing or null values where applicable.
-5. Removing duplicate records where appropriate.
-6. Standardizing categorical values.
-7. Extracting useful information from date fields.
-8. Creating a Shipping Days custom column.
-9. Renaming fields to improve clarity and consistency.
-10. Preparing the cleaned data for dimensional modelling.
+1. Removed redundant/junk columns (记录数, Row ID)
+2. Fixed Order Date and Ship Date data types (text → Date)
+3. Created a Shipping Duration (Days) custom column
+4. Resolved the Market vs Market2 redundancy
+5. Standardized the Region field (disambiguated reused names across markets)
+6. Extracted Order Month and Order Quarter from Order Date
+7. Created a conditional Discount Tier column
+8. Cleaned Product Name text encoding (curly quotes, whitespace)
+9. Created a DimCustomer reference table (deduplicated)
 
-The transformations were not performed simply for the purpose of increasing
-the number of steps. Each transformation was selected to improve data quality,
+The transformation was selected to improve data quality,
 consistency or analytical usefulness.
 
 ---
 
-## 5.1 Power Query Transformation Documentation
+## Section B: Power Query — Data Cleaning & Transformation
 
-### Transformation 1 – Data Type Correction
+The raw **Global Superstore** dataset (51,290 rows, 27 columns) contained no
+missing values or duplicate rows, but had several structural, type, and design
+problems that made it unsuitable for direct analysis. Below are the
+transformations applied in Power Query that transformed it  from being raw data into an
+analysis-ready data.
 
-**Problem:** Some fields required appropriate data types before analysis.
+> **Power Query Applied Steps**
+>
+> ![Power Query Applied Steps](<img width="1917" height="1001" alt="Screenshot 2026-08-15 103044" src="https://github.com/user-attachments/assets/5d7e064b-fc7d-4462-82e0-3234ddf7c7bd" />
+)
+> 
+---
 
-**Transformation:** Data types were reviewed and corrected in Power Query.
+### Transformation 1: Removed Redundant and Unnecessary Columns
 
-**Reason:** Correct data types are necessary for accurate calculations,
-filtering and time-based analysis.
+**Problem:** The original dataset contained fields that were not useful for the
+planned analysis. In particular, `记录数` (record count) contained the value
+`1` for every row and did not provide additional information about the
+transactions.  The dataset also contained `Row ID`, which was simply a
+sequential identifier and was not required for the planned business analysis. Also
+the `Discount` had 0 in all the rows therefore, it was removed because it had no meaningful
+information about discounts given.
 
-**Result:** The relevant fields were assigned appropriate data types.
+**Transformation:** The `记录数`, `Row ID` and `Discount` columns were removed from the
+FactSales query using **Remove Columns** in Power Query.
+
+**Reason:** These fields did not contribute to the sales, profitability,
+product, customer, geographic or shipping analysis. Removing them reduced
+unnecessary clutter and made the dataset easier to work with. It also removed
+the non-English `记录数` field, resulting in a clearer and more consistent
+schema.
+
+**Result:** The three unnecessary columns were removed, leaving the fields that
+were relevant to the analysis and subsequent data modelling.
+
+**Screenshot:**
+
+<img width="1912" height="977" alt="Screenshot 2026-08-15 102641" src="https://github.com/user-attachments/assets/cdb56343-f370-4981-b6fe-5dd4d0c9136f" />
 
 ---
 
-### Transformation 2 – Removing Unnecessary Columns
+### Transformation 2: Fixed Order Date and Ship Date Data Types
 
-**Problem:** Some fields were not required for the intended analysis.
+**Problem:** `Order Date` and `Ship Date` required the correct data type to
+support date-based analysis and calculations.
 
-**Transformation:** Unnecessary columns were removed from the working dataset.
+**Transformation:** The data type of both `Order Date` and `Ship Date` was
+changed to **Date** using Power Query.
 
-**Reason:** Removing irrelevant fields simplifies the model and focuses the
-analysis on useful information.
+**Reason:** Correct date formatting is necessary for analysing sales over time,
+creating date-related fields and calculating the number of days between an
+order and its shipment.
 
-**Result:** The dataset was reduced to relevant analytical fields.
-
----
-
-### Transformation 3 – Cleaning Text Fields
-
-**Problem:** Text fields may contain inconsistent formatting or unnecessary
-spaces.
-
-**Transformation:** Text-cleaning operations were applied where required.
-
-**Reason:** Consistent text values prevent the same category from being treated
-as different categories.
-
-**Result:** Categorical fields became more consistent for grouping and
-filtering.
+**Result:** Both fields were converted to Date values and were ready for
+time-based analysis and shipping calculations.
 
 ---
 
-### Transformation 4 – Handling Missing Values
+### Transformation 3: Created a Shipping Duration Column
 
-**Problem:** Missing or null values can affect calculations and visual
-groupings.
+**Problem:** The dataset contained separate `Order Date` and `Ship Date`
+fields, but did not directly show how many days an order took to ship.
 
-**Transformation:** Missing values were reviewed and handled where
-appropriate.
+**Transformation:** A custom column was created to calculate the difference
+between `Ship Date` and `Order Date`.
 
-**Reason:** This improves the reliability of the resulting analysis.
+**Reason:** Shipping duration provides an additional measure that can be used
+to examine operational performance and compare shipping times across different
+shipping modes.
 
-**Result:** Relevant fields were prepared for analysis with missing-value
-issues addressed appropriately.
+**Result:** A new shipping-duration field was added to the dataset and used to
+support the shipping analysis in the Power BI report.
 
----
+**Screenshot:**
 
-### Transformation 5 – Removing Duplicates
-
-**Problem:** Duplicate records can result in double-counting.
-
-**Transformation:** Duplicate records were reviewed and removed where
-appropriate.
-
-**Reason:** This helps preserve the accuracy of transaction-level analysis.
-
-**Result:** The dataset contained the appropriate records for analysis.
+![Shipping duration transformation](screenshots/03_data_types_shipping.png)
 
 ---
 
-### Transformation 6 – Standardizing Categories
+### Transformation 4: Resolved the Market and Market2 Redundancy
 
-**Problem:** Inconsistent categorical values can create separate groups for
-values that represent the same category.
+**Problem:** The dataset contained both `Market` and `Market2`, which provided
+overlapping geographic information. The two fields did not always classify
+locations in the same way.
 
-**Transformation:** Relevant categorical values were standardized.
+**Transformation:** The unnecessary `Market2` field was removed and the
+`Market` values were standardised using **Replace Values**.
 
-**Reason:** Standardization ensures consistent grouping in Power BI visuals.
+**Reason:** Keeping two conflicting geographic fields could result in
+inconsistent groupings and confusing filtering in the report.
 
-**Result:** Categories were represented consistently.
-
----
-
-### Transformation 7 – Extracting Date Information
-
-**Problem:** Detailed date fields are required for time-based analysis.
-
-**Transformation:** Relevant date components were extracted from the date
-fields.
-
-**Reason:** Year and other date attributes support trend analysis and
-time-based filtering.
-
-**Result:** The dataset was prepared for time-based analysis and the creation
-of a dedicated date dimension.
-
----
-
-### Transformation 8 – Creating Shipping Days
-
-**Problem:** The dataset contains both Order Date and Ship Date, but does not
-directly provide the number of days required to ship an order.
-
-**Transformation:** A custom column named `Shipping Days` was created using the
-difference between Ship Date and Order Date.
-
-**Reason:** Shipping duration provides an additional operational measure that
-can be analysed by shipping mode and other dimensions.
-
-**Result:** The model contains a derived Shipping Days field that can be used
-to calculate average shipping time.
-
----
-
-### Transformation 9 – Renaming Fields
-
-**Problem:** Some field names were not sufficiently clear or consistent for
+**Result:** A single, consistent `Market` field was retained for geographic
 analysis.
 
-**Transformation:** Relevant fields were renamed appropriately.
+---
 
-**Reason:** Clear field names improve model readability and reduce ambiguity
-when creating DAX calculations and visualizations.
+### Transformation 5: Standardised the Region Field
 
-**Result:** The analytical model contains clearer and more consistent field
-names.
+**Problem:** Some `Region` names were repeated across different markets. For
+example, the same regional name could occur in more than one market, making it
+difficult to distinguish between them when analysing regional performance.
+
+**Transformation:** A custom column was created by combining the relevant
+market and region information. The resulting values were then used to provide
+clearer regional labels.
+
+**Reason:** This prevents different geographic areas with the same region name
+from being grouped together incorrectly.
+
+**Result:** Region values were made more distinct and suitable for use in
+visuals, slicers and geographic analysis.
+
+**Screenshot:**
+
+![Geographic transformations in Power Query](screenshots/04_geographic_transformations.png)
 
 ---
 
-> **Screenshot: Power Query Transformations**
->
-> Insert screenshot here:
->
-> `screenshots/02_power_query.png`
+### Transformation 6: Extracted Order Month and Order Quarter
+
+**Problem:** The dataset contained year information but required additional
+date details for more detailed time-based analysis.
+
+**Transformation:** **Month Name** and **Quarter** were extracted from
+`Order Date`. The quarter values were formatted as Q1, Q2, Q3 and Q4.
+
+**Reason:** Including month and quarter information makes it possible to
+examine sales patterns at different points during the year.
+
+**Result:** Additional date fields were created to support time-based analysis
+and the Power BI visuals.
+
+**Screenshot:**
+
+![Date transformations in Power Query](screenshots/05_date_transformations.png)
+
+---
+
+### Transformation 7: Created a Conditional Column
+
+**Problem:** Some information in the dataset was available as raw values but
+could be made easier to interpret by grouping it into meaningful categories.
+
+**Transformation:** A conditional column was created in Power Query using
+specified conditions to classify the records into meaningful groups.
+
+**Reason:** Grouping values into categories makes the information easier to
+compare and use in Power BI visuals.
+
+**Result:** A new categorical field was created that could be used for further
+analysis and filtering.
+
+**Screenshot:**
+
+![Conditional column transformation](screenshots/06_conditional_column.png)
+
+---
+
+### Transformation 8: Cleaned Product Name Text
+
+**Problem:** Some `Product Name` values contained unnecessary spaces,
+non-printable characters or inconsistent text formatting.
+
+**Transformation:** The Product Name field was processed using **Trim** and
+**Clean** operations. Replace Values was also used where necessary to
+standardise inconsistent characters.
+
+**Reason:** Consistent product names are important when grouping products,
+searching for products or displaying them in tables and visuals.
+
+**Result:** The Product Name values were cleaned and standardised, improving
+the consistency of product-level analysis.
+
+**Screenshot:**
+
+![Product Name text cleaning](screenshots/07_text_cleaning.png)
+
+---
+
+### Transformation 9: Created a DimCustomer Reference Table
+
+**Problem:** Customer information such as `Customer ID`, `Customer Name` and
+`Segment` was repeated across many transaction records in the original flat
+dataset.
+
+**Transformation:** A reference query was created from the cleaned FactSales
+query. The relevant customer fields were retained and duplicate customer
+records were removed to create the `DimCustomer` table.
+
+**Reason:** Separating customer information from transaction data provides a
+cleaner structure for the data model and avoids unnecessary repetition.
+
+**Result:** A separate `DimCustomer` table was created with unique customer
+information. The table was then available to form a relationship with the
+FactSales table using `Customer ID`.
+
+**Screenshot:**
+
+![DimCustomer reference table](screenshots/08_dimcustomer.png)
+
+---
+
+### Summary of the Power Query Transformations
+
+The transformations prepared the Global Superstore dataset for the next
+stages of the project. Unnecessary fields were removed, data types were
+corrected, text and geographic information were standardised, additional date
+and shipping information was created, and the customer information was
+separated into a dimension table.
+
+The resulting data was therefore more suitable for **data modelling, DAX
+calculations, interactive visualisation and business analysis**.
 
 ---
 
