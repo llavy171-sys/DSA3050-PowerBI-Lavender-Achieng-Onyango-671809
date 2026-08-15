@@ -802,16 +802,29 @@ The product analysis provides information at different levels of product
 detail, including Category, Sub-Category and Product, allowing users to
 investigate product performance at a more detailed level.
 
+**Screenshot:**
+<img width="1335" height="751" alt="Screenshot 2026-08-15 175319" src="https://github.com/user-attachments/assets/026fac12-b856-4c0a-886d-205ca7c98bdb" />
+
+
 ### Page Navigation
 
 Navigation between the dashboard pages allows users to move from the
 Executive Overview to Sales and Product Analysis and then to Profitability and
 Diagnostic Insights.
 
+**Screenshot:**
+
+<img width="1502" height="852" alt="Screenshot 2026-08-15 172442" src="https://github.com/user-attachments/assets/465d1d35-c668-4bd1-87ba-1b08b998ec71" />
+
 ### Bookmarks
 
 A Reset Filters bookmark was implemented to return the dashboard to its
 default view after filters have been applied.
+
+**Screenshot:**
+
+<img width="1447" height="852" alt="Screenshot 2026-08-15 172442" src="https://github.com/user-attachments/assets/a8f28022-d290-437b-ba7f-972db2a730e3" />
+
 
 ---
 
