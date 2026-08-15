@@ -814,7 +814,7 @@ Diagnostic Insights.
 
 **Screenshot:**
 
-<img width="1502" height="852" alt="Screenshot 2026-08-15 172442" src="https://github.com/user-attachments/assets/465d1d35-c668-4bd1-87ba-1b08b998ec71" />
+<img width="1323" height="772" alt="Screenshot 2026-08-15 174000" src="https://github.com/user-attachments/assets/0401618a-4c74-4e47-823e-63ae37071b8d" />
 
 ### Bookmarks
 
