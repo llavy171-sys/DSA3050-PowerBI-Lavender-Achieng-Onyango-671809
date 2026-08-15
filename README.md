@@ -229,6 +229,9 @@ order and its shipment.
 **Result:** Both fields were converted to Date values and were ready for
 time-based analysis and shipping calculations.
 
+**Screenshot:**
+<img width="1911" height="971" alt="Screenshot 2026-08-15 102705" src="https://github.com/user-attachments/assets/0c7c314f-4983-417b-9fb4-da6ae711c26f" />
+
 ---
 
 ### Transformation 3: Created a Shipping Duration Column
@@ -248,7 +251,7 @@ support the shipping analysis in the Power BI report.
 
 **Screenshot:**
 
-![Shipping duration transformation](screenshots/03_data_types_shipping.png)
+<img width="1917" height="982" alt="Screenshot 2026-08-15 102801" src="https://github.com/user-attachments/assets/d0072817-ac9f-4964-8d88-376935fdadbf" />
 
 ---
 
@@ -266,6 +269,9 @@ inconsistent groupings and confusing filtering in the report.
 
 **Result:** A single, consistent `Market` field was retained for geographic
 analysis.
+
+**Screenshot:**
+<img width="1886" height="952" alt="image" src="https://github.com/user-attachments/assets/2de6395c-e579-4c01-a355-773ead4eb82a" />
 
 ---
 
@@ -287,7 +293,7 @@ visuals, slicers and geographic analysis.
 
 **Screenshot:**
 
-![Geographic transformations in Power Query](screenshots/04_geographic_transformations.png)
+<img width="1907" height="996" alt="Screenshot 2026-08-15 160510" src="https://github.com/user-attachments/assets/1578e075-9a3e-48e8-bdfa-220cb1d55c65" />
 
 ---
 
@@ -307,13 +313,13 @@ and the Power BI visuals.
 
 **Screenshot:**
 
-![Date transformations in Power Query](screenshots/05_date_transformations.png)
+<img width="1917" height="998" alt="Screenshot 2026-08-15 102854" src="https://github.com/user-attachments/assets/736148cb-54e8-4dc8-8821-d7308801658e" />
 
 ---
 
 ### Transformation 7: Created a Conditional Column
 
-**Problem:** Some information in the dataset was available as raw values but
+**Problem:** Some sales information in the dataset was available as raw values but
 could be made easier to interpret by grouping it into meaningful categories.
 
 **Transformation:** A conditional column was created in Power Query using
@@ -322,12 +328,12 @@ specified conditions to classify the records into meaningful groups.
 **Reason:** Grouping values into categories makes the information easier to
 compare and use in Power BI visuals.
 
-**Result:** A new categorical field was created that could be used for further
+**Result:** A new sales categorical field was created that could be used for further
 analysis and filtering.
 
 **Screenshot:**
 
-![Conditional column transformation](screenshots/06_conditional_column.png)
+<img width="1917" height="957" alt="Screenshot 2026-08-15 103026" src="https://github.com/user-attachments/assets/385968d7-491c-4d1c-a14e-26758d1f81f2" />
 
 ---
 
@@ -337,8 +343,7 @@ analysis and filtering.
 non-printable characters or inconsistent text formatting.
 
 **Transformation:** The Product Name field was processed using **Trim** and
-**Clean** operations. Replace Values was also used where necessary to
-standardise inconsistent characters.
+**Clean** operations. 
 
 **Reason:** Consistent product names are important when grouping products,
 searching for products or displaying them in tables and visuals.
@@ -348,7 +353,7 @@ the consistency of product-level analysis.
 
 **Screenshot:**
 
-![Product Name text cleaning](screenshots/07_text_cleaning.png)
+<img width="1917" height="990" alt="Screenshot 2026-08-15 103006" src="https://github.com/user-attachments/assets/535357b1-a235-4d9d-a170-3a91774d3c64" />
 
 ---
 
@@ -371,7 +376,7 @@ FactSales table using `Customer ID`.
 
 **Screenshot:**
 
-![DimCustomer reference table](screenshots/08_dimcustomer.png)
+<img width="1917" height="937" alt="Screenshot 2026-08-15 161131" src="https://github.com/user-attachments/assets/8fd30669-2522-4ea0-a453-f07b14931c4c" />
 
 ---
 
@@ -474,42 +479,40 @@ and profitability across geographic areas.
 
 ## 6.6 Relationships
 
-The model uses relationships between the dimension tables and `FactSales`.
+The data model connects the `FactSales` table with the relevant dimension
+tables through defined relationships. One-to-many relationships were used
+where appropriate, with the dimension tables acting as the main source of
+filtering for the transaction data.
 
-Where appropriate, one-to-many relationships were used, with the dimension
-tables providing filtering context for the transactional fact table.
-
-The relationships were designed to avoid unnecessary many-to-many
-relationships and ambiguous filter paths.
-
-Single-direction filtering was used where appropriate to maintain a clear
-filter flow from dimensions to the fact table.
+The relationships were structured to keep the model simple and avoid
+unnecessary many-to-many relationships or ambiguous filtering paths.
+Single-direction filtering was also used where appropriate so that filters
+flow clearly from the dimension tables to `FactSales`.
 
 ---
 
 ## 6.7 Modelling Challenges
 
-One of the main modelling considerations was ensuring that descriptive
-dimension tables could filter the transactional fact table without creating
-ambiguous relationships.
+A key challenge was creating relationships between `FactSales` and the
+dimension tables without introducing ambiguous filtering or unnecessary
+many-to-many relationships.
 
-The Date table also required appropriate integration with the transaction
-dates to support time-based analysis.
+Another consideration was connecting `DimDate` correctly to `FactSales` so
+that time-based analysis, such as sales trends and would work correctly.
 
-The model was therefore structured to separate transactional information from
-descriptive attributes and to provide a clear analytical structure.
+The final model uses `FactSales` as the central transaction table, with
+descriptive information separated into dimension tables. This provides a clear
+structure for filtering, calculations and analysis.
 
 > **Screenshot: Completed Data Model**
->
-> Insert screenshot here:
->
-> `screenshots/03_model.png`
+><img width="1527" height="796" alt="Screenshot 2026-08-15 095556" src="https://github.com/user-attachments/assets/bec65e72-ab80-411d-95f1-4565094d88d3" />
 
+> 
 ---
 
 # 7. DAX Measures and Business Calculations
 
-A minimum of 12 meaningful DAX measures was developed to transform the data
+12 meaningful DAX measures was developed to transform the data
 model into an analytical solution.
 
 The measures include core KPIs, calculated business measures and advanced
@@ -532,16 +535,131 @@ The measures created were:
 | 11 | Category Sales Rank |
 | 12 | Profit Status |
 
-The measures use functions including `SUM()`, `DIVIDE()`,
-`DISTINCTCOUNT()`, `CALCULATE()`, `SAMEPERIODLASTYEAR()`, `RANKX()` and
-`IF()`.
-
 ---
 
 ## 7.1 Six Most Important DAX Measures
 
 ### 1. Total Sales
 
-```DAX
-Total Sales =
-SUM(FactSales[Sales])
+```dax
+Total Sales = SUM(FactSales[Sales])
+```
+
+**What it calculates:** Calculates the total sales generated from all transactions.
+
+**Why it is useful:** Total Sales is a key performance indicator used to evaluate overall business sales performance and compare sales across categories, regions, products and time periods.
+
+**Main DAX function used:** `SUM()`
+
+**Filter context:** The measure responds to the active filter context. For example, selecting a specific year, region or category changes the total sales displayed.
+
+**Dashboard use:** Used as a KPI card and in sales analysis visualizations.
+
+---
+
+### 2. Total Profit
+
+```dax
+Total Profit = SUM(FactSales[Profit])
+```
+
+**What it calculates:** Calculates the total profit generated from all transactions.
+
+**Why it is useful:** Total Profit provides an overall measure of business profitability and allows performance to be compared across categories, regions and products.
+
+**Main DAX function used:** `SUM()`
+
+**Filter context:** The measure changes according to the active filters applied to the report.
+
+**Dashboard use:** Used as a KPI card and in profitability analysis visualizations.
+
+---
+
+### 3. Profit Margin %
+
+```dax
+Profit Margin % =
+DIVIDE(
+    [Total Profit],
+    [Total Sales],
+    0
+)
+```
+
+**What it calculates:** Calculates profit as a percentage of total sales.
+
+**Why it is useful:** Profit Margin % measures profitability relative to sales and allows meaningful comparison between different categories, regions and products.
+
+**Main DAX function used:** `DIVIDE()`
+
+**Filter context:** The measure responds to the current filter context. For example, selecting a particular category calculates the profit margin for that category.
+
+**Dashboard use:** Used as a KPI card and in profitability analysis.
+
+---
+
+### 4. Total Orders
+
+```dax
+Total Orders = DISTINCTCOUNT(FactSales[Order ID])
+```
+
+**What it calculates:** Counts the number of unique orders in the dataset.
+
+**Why it is useful:** `DISTINCTCOUNT()` ensures that an order containing several products or transaction rows is counted as one order rather than being counted multiple times.
+
+**Main DAX function used:** `DISTINCTCOUNT()`
+
+**Filter context:** The measure changes when filters such as Year, Region, Category or Customer Segment are applied.
+
+**Dashboard use:** Used as a KPI card on the Executive Overview page.
+
+---
+
+### 5. YoY Sales Growth %
+
+*Only use this measure if you already created `[Previous Year Sales]`.*
+
+```dax
+YoY Sales Growth % =
+DIVIDE(
+    [Total Sales] - [Previous Year Sales],
+    [Previous Year Sales],
+    0
+)
+```
+
+**What it calculates:** Calculates the percentage change in sales compared with the previous year.
+
+**Why it is useful:** This measure helps determine whether sales performance has increased or decreased over time.
+
+**Main DAX functions used:** `DIVIDE()` and the supporting `[Previous Year Sales]` measure.
+
+**Filter context:** The result changes according to the selected time period and other active report filters.
+
+**Dashboard use:** Used as a KPI to communicate year-over-year sales performance.
+
+---
+
+### 6. Category Sales Rank
+
+```dax
+Category Sales Rank =
+RANKX(
+    ALL(FactSales[Category]),
+    [Total Sales],
+    ,
+    DESC,
+    DENSE
+)
+```
+
+**What it calculates:** Ranks product categories according to their total sales, with the highest-selling category receiving rank 1.
+
+**Why it is useful:** The measure allows categories to be compared and identifies the strongest and weakest categories in terms of sales.
+
+**Main DAX functions used:** `RANKX()` and `ALL()`.
+
+**Filter context:** `ALL()` removes the category filter when calculating the ranking, allowing each category to be compared against all categories.
+
+**Dashboard use:** Used in category-level sales analysis to identify the relative performance of product categories.
