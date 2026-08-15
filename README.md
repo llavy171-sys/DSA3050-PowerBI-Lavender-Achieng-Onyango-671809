@@ -161,9 +161,9 @@ The major transformations performed included:
 3. Created a Shipping Duration (Days) custom column
 4. Resolved the Market vs Market2 redundancy
 5. Standardized the Region field (disambiguated reused names across markets)
-6. Extracted Order Month and Order Quarter from Order Date
-7. Created a conditional Discount Tier column
-8. Cleaned Product Name text encoding (curly quotes, whitespace)
+6. Extracted Order Month, Order Quarter and Order Year from Order Date
+7. Created a conditional Sales Category column
+8. Cleaned Product Name text encoding 
 9. Created a DimCustomer reference table (deduplicated)
 
 The transformation was selected to improve data quality,
@@ -181,8 +181,8 @@ analysis-ready data.
 
 > **Power Query Applied Steps**
 >
-> ![Power Query Applied Steps](<img width="1917" height="1001" alt="Screenshot 2026-08-15 103044" src="https://github.com/user-attachments/assets/5d7e064b-fc7d-4462-82e0-3234ddf7c7bd" />
-)
+><img width="1917" height="1001" alt="Screenshot 2026-08-15 103044" src="https://github.com/user-attachments/assets/05ece459-cc54-4a6e-ac29-1729c9e74432" />
+
 > 
 ---
 
